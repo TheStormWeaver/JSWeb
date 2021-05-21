@@ -1,15 +1,13 @@
+const layout = require("../views/layout.js")
+
 const homePage = `
-<html>
-<body>
-  <div>
-    <h1>The Page</h1>
-    <p>Welcome to the page!</p>
-  </div>
-</body>
-</html>
+<div>
+  <h1>Home Page</h1>
+  <p>Welcome to the home page!</p>
+</div>
 `;
 
 module.exports = (req, res) => {
-  res.write(homePage)
+  res.write(layout(homePage))
   res.end()
 }
