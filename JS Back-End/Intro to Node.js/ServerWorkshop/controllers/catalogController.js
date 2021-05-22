@@ -10,7 +10,7 @@ const html = (items) => `
   <input type="submit" value="Create Item">
   </from>
   <ul>
-  ${items.map(item => `<li>${item.name} - ${item.serial}</li>`)}
+  ${items.map(([id, item]) => `<li data-id="${id}">${item.name} - ${item.serial} <a href="/delete?id=${id}">[Delete]</a> </li>`).join("")}
     
     <li>Second Item</li>
     <li>Third Item</li>
@@ -19,7 +19,7 @@ const html = (items) => `
 `;
 
 module.exports = (req, res) => {
-  res.write(layout(html(database)))
+  res.write(layout(html(Object.entries(database.database))))
   res.end()
 }
 
