@@ -8,7 +8,7 @@ module.exports = (req, res) => {
   form.parse(req, (err, fields) => {
     console.log("Created Item")
 
-    database.push(fields)
+    database.additem(fields)
 
     res.writeHead(301, {
       "Redirect": "/catalog"
