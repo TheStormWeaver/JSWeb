@@ -23,3 +23,5 @@ publisher.emit("ping", "Hello World!")
 
 console.log("After")
 publisher.emit("ping", "Hello again!")
+
+publisher.emit("pong", 5, 8)
