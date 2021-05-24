@@ -11,6 +11,7 @@ function demo() {
 
 async function createDir() {
   const dir = await fs.mkdir("./demoDir");
+  console.log(dir)
 }
 
 function deleteDir() {
