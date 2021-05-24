@@ -9,7 +9,7 @@ function demo() {
   console.log(files)
 }
 
-function createDir() {
+async function createDir() {
   const dir = await fs.mkdir("./demoDir");
 }
 
