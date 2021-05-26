@@ -7,8 +7,9 @@ const html = `
 </div>
 `;
 
-module.exports = (req, res) => {
-  res.write(layout(html, "About"))
+module.exports = async (req, res) => {
+  res.write(await layout(html, "About"))
   res.end()
 }
+
 
