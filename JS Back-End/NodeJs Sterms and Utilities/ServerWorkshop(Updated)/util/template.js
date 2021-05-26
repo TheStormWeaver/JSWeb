@@ -3,18 +3,18 @@ const fs = require("fs/promises")
 async function loadTemplate(name) {
   try {
     const template = await fs.reafFile(`./views/${name}.html`)
-    return template
+    return template.toString()
   } catch(err) {
     return ``
   }
 }
 
-function renderLayout (html, title = "Welcome") {
-  const layout = loadTemplate("layout")
-  return layout.replace("{{title}}", title).replace("{{body}}", html)
+async function layout (html, title = "Welcome") {
+  const result = await loadTemplate("layout")
+  return result.replace("{{title}}", title).replace("{{body}}", html)
 }
 
 module.exports = {
   loadTemplate,
-  renderLayout
+  layout
 }
