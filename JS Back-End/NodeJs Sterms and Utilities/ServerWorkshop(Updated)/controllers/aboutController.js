@@ -1,4 +1,4 @@
-const layout = require("../views/layout.js")
+const { layout } = require("../util/template");
 
 const html = `
 <div>
