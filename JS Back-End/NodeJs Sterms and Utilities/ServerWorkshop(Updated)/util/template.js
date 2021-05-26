@@ -1,20 +1,30 @@
-const fs = require("fs/promises")
+const fs = require("fs/promises");
 
 async function loadTemplate(name) {
   try {
-    const template = await fs.reafFile(`./views/${name}.html`)
-    return template.toString()
-  } catch(err) {
-    return ``
+    const template = await fs.reafFile(`./views/${name}.html`);
+    return template.toString();
+  } catch (err) {
+    return ``;
   }
 }
 
-async function layout (html, title = "Welcome") {
-  const result = await loadTemplate("layout")
-  return result.replace("{{title}}", title).replace("{{body}}", html)
+async function layout(body, title = "Welcome") {
+  return render("layout", { title, body });
+}
+
+async function render(name, context = {}) {
+  const result = await loadTemplate(name);
+  const props = Object.keys(context);
+
+  for (const prop of props) {
+    result = result.replace(new RegExp(`{{${prop}}}`, "g"), context[prop]);
+  }
+  return result;
 }
 
 module.exports = {
   loadTemplate,
-  layout
-}
+  layout,
+  render,
+};
