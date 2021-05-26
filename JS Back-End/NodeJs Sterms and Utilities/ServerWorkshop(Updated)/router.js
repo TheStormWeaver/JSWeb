@@ -1,6 +1,11 @@
+const staticFile = require("./controllers/static.js")
 const handlers = {}
 
 function match(method, url) {
+  if(method == "GET" && url.startsWith("/static/")){
+    return staticFile
+  }
+
   const methods = handlers[url] || {}
 
   const handler = methods[method]
@@ -27,6 +32,14 @@ function defaultHandler(req, res) {
   res.statusCode = 404
   res.write("Not Found")
   res.end()
+}
+
+module.exports = {
+  registerHandler,
+  get: (...params) => registerHandler("GET", ...params),
+  post: (...params) => registerHandler("POST", ...params),
+  delete: (...params) => registerHandler("DELETE", ...params),
+  match
 }
 
 module.exports = {
