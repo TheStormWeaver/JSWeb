@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path")
 const catalogRouter = require("./catalog.js");
 const fallback = require("./fallback.js");
 const isAdmin = require("./guard.js");
@@ -6,12 +7,12 @@ const logger = require("./logger.js");
 
 const app = express();
 
+app.use("/static", express.static("static"))
 app.use(catalogRouter)
 app.use(logger)
 
 app.get("/", (req, res) => {
-  res.status(201);
-  res.send("Hello, Express!");
+  res.sendFile(path.join(__dirname, "/static/index.html"));
 });
 
 app.get("/tos", (req, res) => {
