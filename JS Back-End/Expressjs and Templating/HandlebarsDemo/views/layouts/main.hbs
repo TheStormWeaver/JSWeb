@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>{{title}}</title>
 </head>
 <body>
   <nav>
+    {{#if user}}
+    <span>Welcome, {{user.username}}!</span>
+    {{else}}
+    <span><a href="/login">Sign in</a></span>
+    {{/if}}
     <a href="/">Home</a>
     <a href="/catalog">Catlog</a>
     <a href="/about">About</a>
