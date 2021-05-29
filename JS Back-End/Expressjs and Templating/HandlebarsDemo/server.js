@@ -11,9 +11,28 @@ app.set("view engine", ".hbs")
 
 app.get("/", (req, res) => {
   const data = {
+    user: {
+      username: "Peter"
+    },
+    title: "Home Page",
     name: "Peter",
     age: 24,
-    items: ["Lint", "Wallet", "Bubblegum", "Coins"]
+    items: [{
+      type: "Lint",
+      qty: 5
+    }, 
+    {
+      type: "Wallet",
+      qty: 1
+    },
+    {
+      type: "Bubblegum",
+      qty: 10
+    },
+    {
+      type: "Coins",
+      qty: 3.5
+    }]
   }
   res.render("home.hbs", data)
 })
