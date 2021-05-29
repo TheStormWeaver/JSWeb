@@ -4,15 +4,18 @@ const hbs = require("express-handlebars")
 const app = express()
 
 app.engine("handlebars", hbs({
-  partialsDir: "./views",
   extname: ".hbs"
 }))
 
-app.use("view engine", ".hbs")
+app.set("view engine", ".hbs")
 
 app.get("/", (req, res) => {
-  // res.send("Its Working")
-  res.render("home.hbs")
+  const data = {
+    name: "Peter",
+    age: 24,
+    items: ["Lint", "Wallet", "Bubblegum", "Coins"]
+  }
+  res.render("home.hbs", data)
 })
 
 app.listen(3030)
