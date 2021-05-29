@@ -4,6 +4,8 @@
 <h3>Items in pocket</h3>
 <ul>
   {{#each Items}}
-  <li>{{this}}</li>
+  <li>{{type}}: {{qty}}</li>
+  {{else}}
+  <li><span style="font-style: italic">No items avaliable</span></li>
   {{/each}}
 </ul>
