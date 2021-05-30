@@ -3,9 +3,11 @@
 <span>Age {{age}}</span>
 <h3>Items in pocket</h3>
 <ul>
-  {{#each Items}}
-  <li>{{type}}: {{qty}}</li>
+  {{#each items}}
+  {{> item}}
   {{else}}
-  <li><span style="font-style: italic">No items avaliable</span></li>
+  <li>
+    <span style="font-style: italic">No items avaliable</span>
+  </li>
   {{/each}}
 </ul>

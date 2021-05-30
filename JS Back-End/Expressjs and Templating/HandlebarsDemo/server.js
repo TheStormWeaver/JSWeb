@@ -42,5 +42,19 @@ app.get("/", (req, res) => {
   res.render("home.hbs", data);
 });
 
-app.listen(3030);
+app.get("/catalog", (req, res) => [
+  res.render("catalog", {
+    products: [
+      {
+        type: "Washer",
+        qty: 45
+      },
+      {
+        type: "Bolt 3/8",
+        qty: 118
+      },
+    ]
+  })
+])
 
+app.listen(3030);
