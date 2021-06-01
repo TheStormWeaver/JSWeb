@@ -5,8 +5,9 @@ const { init: storage } = require("./models/storage")
 
 const { about } = require("./controllers/about")
 const { catalog } = require("./controllers/catalog")
-const { create, post } = require("./controllers/create")
+const { create, createPost } = require("./controllers/create")
 const { details } = require("./controllers/details")
+const { edit, editPost } = require("./controllers/edit")
 const { notFound } = require("./controllers/notFound")
 
 start()
@@ -27,7 +28,10 @@ async function start() {
   app.get("/about", about)
   app.get("/details/:id", details)
   app.get("/create", create)
-  app.post("/create", post)
+  app.post("/create", createPost)
+
+  app.get("/edit/:id", edit)
+  app.post("/edit/:id", editPost)
   
   app.all("*", notFound)
 
