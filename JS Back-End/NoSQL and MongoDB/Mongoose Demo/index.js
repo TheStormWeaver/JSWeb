@@ -21,6 +21,7 @@ async function start() {
     name: "Garry",
     color: "Turquoise"
   })
+  
   await myCat.save()
 
   const data = await Cat.find({})
