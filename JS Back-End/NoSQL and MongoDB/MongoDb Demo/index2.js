@@ -37,6 +37,7 @@ async function start() {
     lastName: "Smith",
     age: 30
   })
+  
   await person1.save()
   await person2.save()
 
