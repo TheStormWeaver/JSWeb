@@ -42,6 +42,7 @@ async function start() {
   await person2.save()
 
   const people = await Person.find({})
+  
   people.forEach(p => p.sayHi())
   people.map(p => p.fullName).forEach(n => console.log(n))
 }
