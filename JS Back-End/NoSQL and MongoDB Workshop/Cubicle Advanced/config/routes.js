@@ -4,6 +4,7 @@ const { create, createPost } = require("../controllers/create")
 const { details } = require("../controllers/details")
 const { edit, editPost } = require("../controllers/edit")
 const { notFound } = require("../controllers/notFound")
+const { post: commentsPost } = require("../controllers/comments")
 
 module.exports = (app) => {
   app.get("/", catalog);
@@ -14,6 +15,7 @@ module.exports = (app) => {
 
   app.get("/edit/:id", edit);
   app.post("/edit/:id", editPost);
+  app.post("/comments/:cubeId/create", commentsPost)
 
   app.all("*", notFound);
 };
