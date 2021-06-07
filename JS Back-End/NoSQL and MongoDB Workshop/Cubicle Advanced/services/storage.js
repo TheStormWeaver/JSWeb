@@ -1,5 +1,6 @@
 const Cube = require("../models/Cube");
-const Comment = require("../models/Comment")
+const Comment = require("../models/Comment");
+const Accessory = require("../models/Accessory");
 
 async function init() {
   return (req, res, next) => {
@@ -9,6 +10,9 @@ async function init() {
       create,
       edit,
       createComment,
+      createAccessory,
+      getAllAccessories,
+      attachSticker,
     };
     next();
   };
@@ -24,8 +28,8 @@ async function getAll(query) {
     options.difficulty = { $gte: Number(query.from) };
   }
   if (query.to) {
-    options.difficulty = options.difficulty || {}
-    options.difficulty.$lte = Number(query.to) ;
+    options.difficulty = options.difficulty || {};
+    options.difficulty.$lte = Number(query.to);
   }
 
   const cubes = Cube.find(options).lean();
@@ -34,7 +38,10 @@ async function getAll(query) {
 }
 
 async function getById(id) {
-  const cube = await Cube.findById(id).populate("comments").lean();
+  const cube = await Cube.findById(id)
+    .populate("comments")
+    .populate("accessories")
+    .lean();
   if (cube) {
     return cube;
   } else {
@@ -65,11 +72,31 @@ async function createComment(cubeId, comment) {
     throw new ReferenceError("No such ID in database");
   }
 
-  const newComment = new Comment(comment)
-  await newComment.save()
+  const newComment = new Comment(comment);
+  await newComment.save();
 
-  cube.comments.push(newComment)
-  await cube.save()
+  cube.comments.push(newComment);
+  await cube.save();
+}
+
+async function getAllAccessories(existing) {
+  return Accessory.find({ _id: { $nin: existing } }).lean();
+}
+
+async function createAccessory(accessory) {
+  const record = new Accessory(accessory);
+  return record.save();
+}
+
+async function attachSticker(cubeId, stickerId) {
+  const cube = await Cube.findById(cubeId);
+  const sticker = await Accessory.findById(stickerId);
+  if (!cube || !sticker) {
+    throw new ReferenceError("No such ID in database");
+  }
+
+  cube.accessories.push(sticker);
+  return cube.save();
 }
 
 module.exports = {
@@ -79,4 +106,7 @@ module.exports = {
   create,
   edit,
   createComment,
+  createAccessory,
+  getAllAccessories,
+  attachSticker,
 };
