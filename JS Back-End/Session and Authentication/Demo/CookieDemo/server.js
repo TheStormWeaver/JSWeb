@@ -1,19 +1,49 @@
-const express = require("express")
+const express = require("express");
 
-const app = express()
+const app = express();
 
-const sessions = {}
+const sessions = {};
 
-app.get("/", (req, res) => {
-  let visited = 0
-  if(req.headers.cookie){
-    let value = Number(req.headers.cookie.split("=")[1])
-    visited = value
+function mySessionStorage(req, res, next) {
+  let session = {};
+  if (req.header.cookie) {
+    const id = req.headers.cookie.split("=")[1];
+    if (sessions[id] == undefined) {
+      console.log(">>>> Invalid session cookie, generating new");
+      createSession()
+    } else {
+      session = sessions[id];
+      console.log(">>>> Existing session", session);
+    }
+    console.log(">>>> Existing session", session);
+  } else {
+    createSession()
   }
 
-  res.setHeader("Set-Cookie", `sessionId=${visited + 1}`)
+  req.session = session;
 
-  res.send("<h1>Hello</h1><p>You have visited this web page " + visited + " times. </p>")
-})
+  next();
 
-app.listen(3030)
+  function createSession() {
+    const id =
+      "00000000" + ((Math.random() * 99999999) | 0).toString(16).slice(-8);
+    sessions[id] = session;
+
+    res.setHeader("Set-Cookie", `sessionId=${id}`);
+    console.log("New user, generated session with ID", id);
+
+    session.visited = 0;
+  }
+}
+
+app.use(mySessionStorage);
+
+app.get("/", (req, res) => {
+  req.session.visited++;
+
+  res.send(
+    `<h1>Hello</h1><p>Your session has data ${JSON.stringify(req.session)}.</p>`
+  );
+});
+
+app.listen(3030);
