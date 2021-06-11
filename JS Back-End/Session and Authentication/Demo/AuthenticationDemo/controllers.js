@@ -54,5 +54,3 @@ function layout(html, title) {
   ${html}
   `;
 }
-
-
