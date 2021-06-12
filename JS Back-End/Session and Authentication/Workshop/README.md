@@ -1,1 +1,1 @@
-Cubicle Improved with Authentication, Sessions, User profile, Login, Logout and etc.
+Cubicle Improved with Authentication, Sessions, User profile, Login, Logout and Register + UI
