@@ -1,9 +1,7 @@
-const { body, validationResult } = require("express-validator");
 const { isGuest, isAuth } = require("../middlewares/guards");
 
-const { getUserByUsername } = require("../services/user");
-
 const router = require("express").Router();
+const { body, validationResult } = require("express-validator");
 
 router.get("/register", isGuest(), (req, res) => {
   res.render("register", { title: "Register" });
@@ -12,34 +10,42 @@ router.get("/register", isGuest(), (req, res) => {
 router.post(
   "/register",
   isGuest(),
-  body("username", "Username must be at least 3 characters long")
+  body(
+    "username",
+    "Username must be at least 5 characters long and may contain only alphameric characters"
+  )
     .trim()
-    .isLength({ min: 3 })
-    .custom(async (value) => {
-      const user = await getUserByUsername(value);
-      if (user) {
-        throw new Error("User already exists!")
-      } else {
-        return true;
+    .isLength({ min: 5 })
+    .isAlphanumeric(),
+  body(
+    "password",
+    "Password must be at least 8 characters long and may contain only alphameric characters"
+  )
+    .trim()
+    .isLength({ min: 8 })
+    .isAlphanumeric(),
+  body("repeatPassword")
+    .trim()
+    .custom((value, { req }) => {
+      if (value != req.body.password) {
+        throw new Error("Passwords don't match");
       }
+      return true;
     }),
-  body("password", "All fields are required").trim().notEmpty(),
-  body("repeatPassword", "All fields are required").trim().notEmpty(),
-  body("email", "Plase enter a valid email").isEmail().normalizeEmail(),
   async (req, res) => {
     try {
-      const { errors } = validationResult(req);
+      const errors = Object.values(validationResult(req).mapped());
       if (errors.length > 0) {
         throw new Error(errors.map((e) => e.msg).join("\n"));
       }
 
-      // await req.auth.register(req.body);
+      await req.auth.register(req.body);
       res.redirect("/products");
     } catch (err) {
       const ctx = {
         title: "Register",
         errors: err.message.split("\n"),
-        data: { username: req.body.username, email: req.body.email },
+        data: { username: req.body.username },
       };
       res.render("register", ctx);
     }
