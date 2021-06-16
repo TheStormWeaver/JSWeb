@@ -15,12 +15,12 @@ module.exports = () => (req, res, next) => {
     next();
   }
 
-  async function register({ username, password, repeatPassword }) {
-    if (username == "" || password == "" || repeatPassword == "") {
-      throw new Error("All fields are required");
-    } else if (password != repeatPassword) {
-      throw new Error("Passwords do not match!");
+  async function register({ username, password }) {
+    const existing = await userService.getUserByUsername(username);
+    if (existing) {
+      throw new Error("Username is already taken");
     }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await userService.createUser(username, hashedPassword);
@@ -43,7 +43,7 @@ module.exports = () => (req, res, next) => {
   }
 
   async function logout() {
-    res.clearCookie(COOKIE_NAME)
+    res.clearCookie(COOKIE_NAME);
   }
 
   function createToken(user) {
@@ -60,7 +60,7 @@ module.exports = () => (req, res, next) => {
       try {
         const userData = jwt.verify(token, TOKEN_SECRET);
         req.user = userData;
-        res.locals.user = userData
+        res.locals.user = userData;
       } catch (err) {
         res.clearCookie(COOKIE_NAME);
         res.redirect("/auth/login");
