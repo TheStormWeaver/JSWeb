@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { isAuth, isOwner } = require("../middlewares/guards");
 const { preloadCube } = require("../middlewares/preload");
+const { parseMongooseError } = require("../util/parse");
 
 const router = Router();
 
@@ -17,8 +18,8 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/create", isAuth(), (req, res) => {
-    res.render("create", { title: "Create Cube" });
-  });
+  res.render("create", { title: "Create Cube" });
+});
 
 router.post("/create", isAuth(), async (req, res) => {
   const cube = {
@@ -26,27 +27,32 @@ router.post("/create", isAuth(), async (req, res) => {
     description: req.body.description,
     imageUrl: req.body.imageUrl,
     difficulty: Number(req.body.difficulty),
-    author: req.user._id
+    author: req.user._id,
   };
   try {
     await req.storage.create(cube);
+    res.redirect("/");
   } catch (err) {
+    cube[`select${cube.difficulty}`] = true;
+    const ctx = {
+      title: "Create Cube",
+      cube,
+    };
     if (err.name == "ValidationError") {
-      return res.render("create", {
-        title: "Create Cube",
-        error: "All fields are required. Image URL must a valid url",
-      });
+      ctx.errors = parseMongooseError(err);
+    } else {
+      ctx.errors = [err.message]
     }
+    res.render("create", ctx);
   }
-  res.redirect("/");
 });
 
 router.get("/details/:id", preloadCube(), async (req, res) => {
-  const cube = req.data.cube
+  const cube = req.data.cube;
   if (cube === undefined) {
     res.redirect("/404");
   } else {
-    cube.isOwner = req.user && (cube.authorId == req.user._id)
+    cube.isOwner = req.user && cube.authorId == req.user._id;
     const ctx = {
       title: "Cubicle",
       cube,
@@ -56,7 +62,7 @@ router.get("/details/:id", preloadCube(), async (req, res) => {
 });
 
 router.get("/edit/:id", preloadCube(), isOwner(), async (req, res) => {
-  const cube = req.data.cube
+  const cube = req.data.cube;
   if (!cube) {
     res.redirect("/404");
   } else {
@@ -67,7 +73,7 @@ router.get("/edit/:id", preloadCube(), isOwner(), async (req, res) => {
     };
     res.render("edit", ctx);
   }
-})
+});
 
 router.post("/edit/:id", preloadCube(), isOwner(), async (req, res) => {
   const cube = {
@@ -76,14 +82,14 @@ router.post("/edit/:id", preloadCube(), isOwner(), async (req, res) => {
     imageUrl: req.body.imageUrl,
     difficulty: Number(req.body.difficulty),
   };
-  console.log(cube)
+  console.log(cube);
   try {
     await req.storage.edit(req.params.id, cube);
     res.redirect("/");
   } catch (err) {
     res.redirect("/404");
   }
-})
+});
 
 router.get("/attach/:cubeId", async (req, res) => {
   const cube = await req.storage.getById(req.params.cubeId);
@@ -96,7 +102,7 @@ router.get("/attach/:cubeId", async (req, res) => {
     cube,
     accessories,
   });
-})
+});
 
 router.post("/attach/:cubeId", async (req, res) => {
   const cubeId = req.params.cubeId;
@@ -105,6 +111,6 @@ router.post("/attach/:cubeId", async (req, res) => {
   await req.storage.attachSticker(cubeId, stickerId);
 
   res.redirect(`/details/${cubeId}`);
-})
+});
 
 module.exports = router;

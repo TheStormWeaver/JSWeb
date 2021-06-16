@@ -15,14 +15,14 @@ router.post(
     "Username must be at least 5 characters long and may contain only alphameric characters"
   )
     .trim()
-    .isLength({ min: 5 })
+    .isLength({ min: 1 })
     .isAlphanumeric(),
   body(
     "password",
     "Password must be at least 8 characters long and may contain only alphameric characters"
   )
     .trim()
-    .isLength({ min: 8 })
+    .isLength({ min: 1 })
     .isAlphanumeric(),
   body("repeatPassword")
     .trim()
