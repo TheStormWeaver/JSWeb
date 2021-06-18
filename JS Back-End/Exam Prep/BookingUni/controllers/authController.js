@@ -3,15 +3,19 @@ const { body, validationResult } = require("express-validator");
 const { isGuest } = require("../middlewares/guards");
 
 router.get("/register", isGuest(), (req, res) => {
-  res.render("register");
+  res.render("user/register");
 });
 
 router.post(
   "/register",
   isGuest(),
-  body("username")
+  body("email", "Invalid Email").isEmail(),
+  body("password")
     .isLength({ min: 3 })
-    .withMessage("Username must be at least 3 characters long"),
+    .withMessage("Password must be at least 5 characters long")
+    .bail()
+    .matches(/[a-zA-Z0-9]/)
+    .withMessage("Password may contain only english letters and numbers"),
   body("rePassword").custom((value, { req }) => {
     if (value != req.body.password) {
       throw new Error("Passswords don't match");
@@ -23,25 +27,31 @@ router.post(
 
     try {
       if (errors.length > 0) {
-        throw new Error("Validation error");
+        const message = errors.map((e) => e.msg).join("\n");
+        throw new Error(message);
       }
 
-      await req.auth.register(req.body.username, req.body.password);
+      await req.auth.register(
+        req.body.email,
+        req.body.username,
+        req.body.password
+      );
       res.redirect("/");
     } catch (err) {
       const ctx = {
-        errors,
+        errors: err.message.split("\n"),
         userData: {
           username: req.body.username,
+          email: req.body.email,
         },
       };
-      res.render("register", ctx);
+      res.render("user/register", ctx);
     }
   }
 );
 
 router.get("/login", isGuest(), (req, res) => {
-  res.render("login");
+  res.render("user/login");
 });
 
 router.post("/login", isGuest(), async (req, res) => {
@@ -55,13 +65,13 @@ router.post("/login", isGuest(), async (req, res) => {
         username: req.body.username,
       },
     };
-    res.render("login", ctx);
+    res.render("user/login", ctx);
   }
 });
 
 router.get("/logout", (req, res) => {
-  req.auth.logout()
-  res.redirect("/")
-})
+  req.auth.logout();
+  res.redirect("/");
+});
 
 module.exports = router;
