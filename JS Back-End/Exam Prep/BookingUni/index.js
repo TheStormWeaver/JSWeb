@@ -14,8 +14,6 @@ async function start() {
   expressConfig(app);
   routesConfig(app)
 
-  app.get("/", (req, res) => res.send("It Works!"));
-
   app.listen(PORT, () =>
     console.log(`Apllication started at http://localhost:${PORT}`)
   );
