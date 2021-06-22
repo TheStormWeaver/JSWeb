@@ -2,7 +2,7 @@ const hbs = require("express-handlebars");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 
-const authMiddleware = require("../middlewares/auth");
+const authMiddleware = require("../middlewares/auth")
 const storageMiddleware = require("../middlewares/storage");
 
 module.exports = (app) => {
@@ -12,13 +12,14 @@ module.exports = (app) => {
       extname: "hbs",
     })
   );
-  app.set("view engine", "hbs");
 
-  app.use("/static", express.static("static"));
+  app.set("view engine", "hbs")
+
+  app.use("/static", express.static("static"))
   app.use(express.urlencoded({ extended: false }));
-  app.use(cookieParser());
-  app.use(authMiddleware());
-  app.use(storageMiddleware());
+  app.use(cookieParser())
+  app.use(authMiddleware())
+  app.use(storageMiddleware())
 
   app.use((req, res, next) => {
     if (!req.url.includes("favicon")) {
@@ -28,6 +29,6 @@ module.exports = (app) => {
         console.log("Known user", req.user.username);
       }
     }
-    next();
-  });
-};
+    next()
+  })
+}
