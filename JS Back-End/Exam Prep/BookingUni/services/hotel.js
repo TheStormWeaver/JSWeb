@@ -19,21 +19,25 @@ async function getHotelById(id) {
   return hotel
 }
 
-async function editHotel(id, hotel) {
-  const existing = await Hotel.findById(id);
+async function editHotel(id, hotelData) {
+  const hotel = await Hotel.findById(id)
 
-  if (!existing) {
-    throw new ReferenceError("No such ID in database");
-  }
+  hotel.name = hotelData.name
+  hotel.city = hotelData.city
+  hotel.rooms = Number(hotelData.rooms)
+  hotel.imageUrl = hotelData.imageUrl
 
-  Object.assign(existing, hotel);
-  return existing.save();
+  return hotel.save()
 }
 
+async function deleteHotel(id) {
+  return Hotel.findByIdAndDelete(id)
+}
 
 module.exports = {
   createHotel,
   getAllHotels,
   getHotelById,
   editHotel,
+  deleteHotel,
 }

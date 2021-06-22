@@ -5,16 +5,14 @@ const databaseConfig = require("./config/database");
 const expressConfig = require("./config/express");
 const routesConfig = require("./config/routes");
 
-start();
+start()
 
 async function start() {
-  const app = express();
+  const app = express()
 
   await databaseConfig(app);
   expressConfig(app);
   routesConfig(app)
 
-  app.listen(PORT, () =>
-    console.log(`Apllication started at http://localhost:${PORT}`)
-  );
+  app.listen(PORT, () => console.log(`Apllication started at http://localhost:${PORT}`))
 }

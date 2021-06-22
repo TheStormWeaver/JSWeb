@@ -1,6 +1,6 @@
 <section id="viewAddhotel">
   <h2>Add new hotel</h2>
-  <form id="formAddhotel" action="/hotels/create" method="POST">
+  <form id="formAddhotel" action="/hotels/create" method="POST" >
     <label for="hotel">Hotel name:</label>
     <input type="text" id="hotel" name="name" placeholder="Hotel name" value="{{hotelData.name}}">
     <label for="city">City:</label>
@@ -14,7 +14,7 @@
       value="{{hotelData.rooms}}"
     >
     <label for="imgUrl">Image:</label>
-    <input type="text" id="imgUrl" name="imageUrl" placeholder="https://" value="{{hotelData.imageUrl}}">
+    <input type="text" id="imgUrl" name="imageUrl" placeholder="https://" value="{{hotelData.imageUrl}}"/>
 
     <input type="submit" class="create" value="Add" />
   </form>
