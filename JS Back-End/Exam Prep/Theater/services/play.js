@@ -2,7 +2,7 @@ const Play = require("../models/Play");
 const User = require("../models/User");
 
 async function getAllPlays() {
-  const plays = await Play.find({ public: true }).sort({ createdAt: -1 }).lean();
+  const plays = await Play.find({ public: true }).sort({ createdAt: -1 }).lean(); // used for sorting by date (-1) from the newest to the oldest
 
   return plays;
 }
