@@ -20,7 +20,7 @@ router.post(
     .withMessage("Password must be at least 3 characters long")
     .bail()
     .isAlphanumeric()
-    .withMessage("Username may contain only english letters and digits"),
+    .withMessage("Password may contain only english letters and digits"),
   body("rePassword").custom((value, { req }) => { //change the name of rePass if necessary
     if (value != req.body.password) {
       throw new Error("Passswords don't match");
