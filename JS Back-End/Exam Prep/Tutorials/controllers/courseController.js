@@ -134,7 +134,7 @@ router.get("/enroll/:id", isUser(), async (req, res) => {
     res.redirect("/course/details/" + req.params.id);
   } catch (err) {
     console.log(err.message)
-    res.redirect("/play/details/" + req.params.id)
+    res.redirect("/course/details/" + req.params.id)
   }
 });
 
