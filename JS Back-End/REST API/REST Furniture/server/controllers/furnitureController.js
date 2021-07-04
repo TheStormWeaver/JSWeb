@@ -1,32 +1,70 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
-const { getAll, getById, create } = require("../services/furniture")
+const { isAuth, isOwner } = require("../middlewares/guards");
+const { getAll, create, update, remove } = require("../services/furniture");
+const { parseError } = require("../util");
+const preload = require("../middlewares/preload");
 
 router.get("/", async (req, res) => {
-  console.log(req.user)
-  const data = await getAll()
-  res.json(data)
-})
+  const data = await getAll();
+  res.json(data);
+});
 
-router.post("/", async (req, res) => {
+router.post("/", isAuth(), async (req, res) => {
   const data = {
     make: req.body.make,
     model: req.body.model,
-    year: req.body.year,
+    year: Number(req.body.year),
     description: req.body.description,
-    price: req.body.price,
+    price: Number(req.body.price),
     img: req.body.img,
-    material: req.body.material, 
+    material: req.body.material,
+    owner: req.user._id,
+  };
+
+  try {
+    const result = await create(data);
+    res.status(201).json(result);
+  } catch (err) {
+    const message = parseError(err);
+    res.status(err.status || 400).json({ message });
   }
+});
 
-  const result = await create(data)
-  res.status(201).json(result)
-})
+router.get("/:id", preload(), async (req, res) => {
+  const item = req.data.toObject();
+  item._ownerId = item.owner && item.owner.toString();
 
-router.get("/:id", async (req, res) => {
-  const item = await getById(req.params.id)
+  res.json(item);
+});
 
-  res.json(item)
-})
+router.put("/:id", isAuth(), preload(), isOwner(), async (req, res) => {
+  const updated = {
+    make: req.body.make,
+    model: req.body.model,
+    year: Number(req.body.year),
+    description: req.body.description,
+    price: Number(req.body.price),
+    img: req.body.img,
+    material: req.body.material,
+  };
 
-module.exports = router
+  try {
+    const result = await update(req.data, updated);
+    res.json(result);
+  } catch (err) {
+    const message = parseError(err);
+    res.status(err.status || 400).json({ message });
+  }
+});
+
+router.delete("/:id", isAuth(), preload(), isOwner(), async (req, res) => {
+  try {
+    await remove(req.params.id)
+    res.status(204).end()
+  } catch (err) {
+    res.status(err.status || 400).json({ message: err.message });
+  }
+});
+
+module.exports = router;
