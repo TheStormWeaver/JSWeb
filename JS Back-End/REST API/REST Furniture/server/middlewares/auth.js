@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const { SECRET } = require("../config")
 
 module.exports = () => (req, res, next) => {
-  const token = req.headers["X-Authorization"];
+  const token = req.headers["x-authorization"];
   try {
     if (token) {
       const userData = jwt.verify(token, SECRET);
@@ -11,6 +11,6 @@ module.exports = () => (req, res, next) => {
     next();
   } catch (err) {
     console.log(err.message)
-    res.status(401).json({ message: "Invalid access token. Please sign in." });
+    //res.status(401).json({ message: "Invalid access token. Please sign in." });
   }
 };
