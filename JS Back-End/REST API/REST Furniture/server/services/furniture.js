@@ -12,11 +12,24 @@ async function create(data){
 }
 
 async function getById(id) {
-  return Furniture.findById(id).lean()
+  return Furniture.findById(id)
+}
+
+async function update(original, updated) {
+  Object.assign(original, updated)
+  await original.save()
+
+  return original
+}
+
+async function remove(id) {
+  return Furniture.findByIdAndDelete(id)
 }
 
 module.exports = {
   getAll,
   getById,
   create,
+  update,
+  remove,
 }

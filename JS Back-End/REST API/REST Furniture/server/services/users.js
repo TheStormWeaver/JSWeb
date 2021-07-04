@@ -25,7 +25,7 @@ async function register(email, password) {
   return {
     _id: user._id, 
     email: user.email,
-    acessToken: createToken(user),
+    accessToken: createToken(user),
   }
 }
 
@@ -33,7 +33,7 @@ async function login(email, password) {
   const user = await User.findOne({ email })
 
   if(!user) {
-    const err = new Error("Incorrect username or password")
+    const err = new Error("Incorrect email or password")
     err.status = 401
     throw err
   }
@@ -41,7 +41,7 @@ async function login(email, password) {
   const match = await bcrypt.compare(password, user.hashedPassword)
 
   if(!match) {
-    const err = new Error("Incorrect username or password")
+    const err = new Error("Incorrect email or password")
     err.status = 401
     throw err
   }
@@ -49,7 +49,7 @@ async function login(email, password) {
   return {
     _id: user._id, 
     email: user.email,
-    acessToken: createToken(user),
+    accessToken: createToken(user),
   }
 }
 
