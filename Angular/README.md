@@ -1,1 +1,1 @@
-Angular Fundamentals course Sofuni 2021
+Angular course Sofuni 2021
