@@ -1,0 +1,21 @@
+<!-- <div>{{title}}</div>
+
+<input [value]="title">
+
+<button (click)="buttonClickHandler()">Click Me</button>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{user.name}}
+  </li>
+</ul> -->
+
+<div>{{title}}</div>
+
+<input #inputElement type="text">
+
+<button (click)="changeTitleHandler(inputElement)">Click Me</button>
+
+<div *ngIf="showText" [class] ="classes">visible</div>
+
+<!-- <button (click)="toggleText($event)">{{showText ? "Hide Text" : "Show Text"}}</button> -->
