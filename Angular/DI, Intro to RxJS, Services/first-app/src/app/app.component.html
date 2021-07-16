@@ -1,0 +1,11 @@
+<div>
+  Header
+</div>
+
+<div id="content">
+  <app-user-list [userArray]="userService.users" (addUser)="userService.addNewUserHandler($event)"></app-user-list>
+</div>
+
+<div>
+  Footer
+</div>
