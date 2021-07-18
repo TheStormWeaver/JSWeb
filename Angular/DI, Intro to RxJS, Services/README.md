@@ -1,1 +1,1 @@
-Updated "first-app" Angular application from "Intro to Angular and TypeScript"
+Updated "first-app" Angular application from "Components"
