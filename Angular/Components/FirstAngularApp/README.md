@@ -1,1 +1,1 @@
-Testing Angular functionalities and basics
+Testing Angular components, template, events
