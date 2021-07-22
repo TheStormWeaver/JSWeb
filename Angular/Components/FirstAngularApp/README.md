@@ -1,1 +1,1 @@
-Testing Angular components, template, events
+Testing Angular components, template, events and lifecycle hooks
