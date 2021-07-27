@@ -22,4 +22,4 @@ const schema = new Schema({
   author: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
-module.exports = model("Play", schema);
+module.exports = model("Course", schema);
