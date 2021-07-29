@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div id="content">
+  <router-outlet (activate)="actiavteHandler($event)"></router-outlet>
+</div>
+
+<button (click)="toggleActive()" [appHighlight]="isActive">
+  Toggle active
+</button>
+
+<ng-template #isActiveTemplate> Is Active - true </ng-template>
+
+<ng-template #isNotActiveTemplate> Is Active - false </ng-template>
+
+<ng-container
+  *ngTemplateOutlet="isActive ? isActiveTemplate : isNotActiveTemplate"
+></ng-container>
+
+<!-- <ng-template [appMyIf]="isActive" let-data="data" let-test>
+  <ng-container>
+    {{ data }}
+    {{ test }}
+    Is Active - true
+  </ng-container>
+</ng-template> -->
+
+<!-- <ng-container *appMyIf="isActive; let test; let data = data">
+  {{ data }}
+  {{ test }}
+  Is Active - true
+</ng-container> -->
+
+<app-footer></app-footer>
