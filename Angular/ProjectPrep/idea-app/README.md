@@ -1,3 +1,3 @@
 # LoginApp
 
-Simple app for testing login functionalities of firebase
+Simple app for testing Authentication functionalities of firebase (including a login, register, home and profile page)
