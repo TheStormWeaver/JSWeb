@@ -1,4 +1,4 @@
-#CoffeShop
+##CoffeShop
 
 Simple app used for testing CRUD Firebase operations
 
