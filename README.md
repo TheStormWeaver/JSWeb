@@ -33,11 +33,11 @@ JavaScript е уникален с това, че позволява прилаг
 
 # Course Links
 
-[JS Web Course Link](https://softuni.bg/modules/96/js-web/1287)
+- [JS Web Course Link](https://softuni.bg/modules/96/js-web/1287)
 
-[JS Back-End](https://softuni.bg/trainings/3357/js-back-end-may-2021)
+- [JS Back-End](https://softuni.bg/trainings/3357/js-back-end-may-2021)
 
-[Angular](https://softuni.bg/trainings/3473/angular-july-2021)
+- [Angular](https://softuni.bg/trainings/3473/angular-july-2021)
 
 <p align="center">
   <img src="https://img.shields.io/badge/Storm-Weaver-blue" alt="storm" width="10%">
