@@ -1,1 +1,38 @@
-JS Back-End Softuni Course 2021
+<p align="center">
+  <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="love">
+  <img src="https://forthebadge.com/images/badges/uses-html.svg" alt="html">
+  <img src="https://forthebadge.com/images/badges/uses-css.svg" alt="css">
+  <img src="https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg" alt="works">
+</p>
+
+<p align="center">
+<a href="https://softuni.bg/trainings/3357/js-back-end-may-2021">
+  <img width="100%" src="https://softuni.bg/files/courses/js-back-end.jpg" alt="course">
+  </a>
+</p>
+
+# За курса
+
+Курсът е интензивен и цели да запознае учащите с разработката на сървърни JavaScript приложения върху платформата Node.js, използвайки Express.js, като framework. По време на обучението ще разберем как да създадем сървър с Node.js, ще се научим на сървър-клиент архитектурата и как да правим лесни и бързи data-driven web приложения с Node.js, Express.js и MongoDB, използвайки съвременни похвати и инструменти. Ще се разглежда една от най-популярните нерелационни бази от данни - MongoDB, заедно с библиотеката Mongoose за взимане на данни от нея. Към края на курса ще се изгради от нулата един цялостен REST API, ползвайки Express.js и MongoDB.
+
+# Умения
+
+- Какво е Web Server?
+- Основни познания по HTTP протокола
+- Сървърни приложения с Node.JS
+- Работа с нерелационни бази данни
+- Създаване на приложения с Express и Handlebars
+- Създаване на MVC архитектура
+
+# Course Links
+
+- [JS Web Course Link](https://softuni.bg/modules/96/js-web/1287)
+
+- [JS Back-End](https://softuni.bg/trainings/3357/js-back-end-may-2021)
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Storm-Weaver-blue" alt="storm" width="10%">
+  <img src="https://img.shields.io/badge/Open%20Source-Project-red" alt="project" width="13%">
+  <img src="https://img.shields.io/badge/Work-in%20progress-yellow" alt="progress" width="11%">
+  <img src="https://img.shields.io/badge/License-MT-blueviolet" alt="license" width="8%">
+</p>
