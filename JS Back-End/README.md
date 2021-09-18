@@ -1,13 +1,6 @@
 <p align="center">
-  <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="love">
-  <img src="https://forthebadge.com/images/badges/uses-html.svg" alt="html">
-  <img src="https://forthebadge.com/images/badges/uses-css.svg" alt="css">
-  <img src="https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg" alt="works">
-</p>
-
-<p align="center">
 <a href="https://softuni.bg/trainings/3357/js-back-end-may-2021">
-  <img width="100%" src="https://softuni.bg/files/courses/js-back-end.jpg" alt="course">
+  <img width="100%" src="https://miro.medium.com/max/1200/1*YekyuOZGMw-kGOEqU4YPZg.jpeg" alt="course">
   </a>
 </p>
 
