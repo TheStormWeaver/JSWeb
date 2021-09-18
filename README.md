@@ -42,6 +42,6 @@ JavaScript е уникален с това, че позволява прилаг
 <p align="center">
   <img src="https://img.shields.io/badge/Storm-Weaver-blue" alt="storm" width="10%">
   <img src="https://img.shields.io/badge/Open%20Source-Project-red" alt="project" width="13%">
-  <img src="https://img.shields.io/badge/Work-in%20progress-yellow" alt="progress" width="11%">
+  <img src="https://img.shields.io/badge/Finished-Repo-green" alt="progress" width="11%">
   <img src="https://img.shields.io/badge/License-MT-blueviolet" alt="license" width="8%">
 </p>
