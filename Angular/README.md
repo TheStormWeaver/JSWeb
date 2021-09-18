@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://softuni.bg/trainings/3473/angular-july-2021">
-  <img width="90%" src="https://repository-images.githubusercontent.com/24195339/87018c00-694b-11e9-8b5f-c34826306d36" alt="course">
+  <img width="90%" src="https://cdn.worldvectorlogo.com/logos/angular-3.svg" alt="course">
   </a>
 </p>
 
