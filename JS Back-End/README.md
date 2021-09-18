@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://softuni.bg/trainings/3357/js-back-end-may-2021">
-  <img width="100%" src="https://miro.medium.com/max/1200/1*YekyuOZGMw-kGOEqU4YPZg.jpeg" alt="course">
+  <img width="100%" src="https://miro.medium.com/max/1051/1*q9myzo5Au8OfsaSrCodNmw.png" alt="course">
   </a>
 </p>
 
