@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://softuni.bg/trainings/3473/angular-july-2021">
-  <img width="90%" src="https://nakov.com/wp-content/uploads/2012/03/Software-University-logo-horizontal.png" alt="course">
+  <img width="90%" src="https://repository-images.githubusercontent.com/24195339/87018c00-694b-11e9-8b5f-c34826306d36" alt="course">
   </a>
 </p>
 
