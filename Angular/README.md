@@ -23,6 +23,13 @@
 
 - [Angular](https://softuni.bg/trainings/3473/angular-july-2021)
 
+# Certificate
+<p align="center">
+<a href="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee">
+  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee" alt="certificate">
+  </a>
+</p>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Storm-Weaver-blue" alt="storm" width="10%">
   <img src="https://img.shields.io/badge/Open%20Source-Project-red" alt="project" width="13%">
