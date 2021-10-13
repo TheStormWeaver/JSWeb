@@ -26,7 +26,7 @@
 # Certificate
 <p align="center">
 <a href="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be">
-  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="certificate">
+  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="JS Back-End Certificate">
   </a>
 </p>
 
