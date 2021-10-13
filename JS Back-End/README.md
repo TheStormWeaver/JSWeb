@@ -23,6 +23,14 @@
 
 - [JS Back-End](https://softuni.bg/trainings/3357/js-back-end-may-2021)
 
+# Certificate
+<p align="center">
+<a href="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be">
+  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="certificate">
+  </a>
+</p>
+
+
 <p align="center">
   <img src="https://img.shields.io/badge/Storm-Weaver-blue" alt="storm" width="10%">
   <img src="https://img.shields.io/badge/Open%20Source-Project-red" alt="project" width="13%">
