@@ -42,13 +42,13 @@ JavaScript е уникален с това, че позволява прилаг
 # Certificates
 <p align="center">
 <a href="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be">
-  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="certificate">
+  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="JS Back-End Certificate">
   </a>
   
 </p>
 <p align="center">
 <a href="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee">
-  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee" alt="certificate">
+  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee" alt="Angular Certificate">
   </a>
 </p>
 
