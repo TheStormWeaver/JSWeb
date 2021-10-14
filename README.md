@@ -41,8 +41,8 @@ JavaScript е уникален с това, че позволява прилаг
 
 # Certificates
 <p align="center">
-<a href="https://softuni.bg/certificates/certificates/converttoimage/98308?code=ac7b26cf">
-  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/98308?code=ac7b26cf" alt="certificate">
+<a href="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be">
+  <img width="100%" src="https://softuni.bg/certificates/certificates/converttoimage/108973?code=3fd339be" alt="certificate">
   </a>
   
 </p>
