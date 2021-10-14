@@ -26,7 +26,7 @@
 # Certificate
 <p align="center">
 <a href="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee">
-  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee" alt="certificate">
+  <img width="90%" src="https://softuni.bg/certificates/certificates/converttoimage/110755?code=8e8bdaee" alt="Angular Certificate">
   </a>
 </p>
 
