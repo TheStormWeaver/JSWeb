@@ -1,4 +1,4 @@
-const { loadTemplate, layout } = require("../util/template.js");
+const { loadTemplate, layout } = require("../util/template");
 
 module.exports = async (req, res) => {
   const homePage = await loadTemplate("home");

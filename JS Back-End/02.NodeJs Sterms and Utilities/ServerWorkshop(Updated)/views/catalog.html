@@ -1,17 +1,18 @@
 <div>
   <h1>Catalog</h1>
   <form method="POST" action="/create">
-  <label>Name <input type="text" name="name">
-  <label>S/N <input type="text" name="serial">
-  <input type="submit" value="Create Item">
-  </from>
+    <label>Name <input type="text" name="name" /></label>
+    <label>S/N <input type="text" name="serial" /></label>
+    <input type="submit" value="Create Item" />
+  </form>
   <ul>
     {{items}}
   </ul>
 
   <form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="text" name="category">
-    <input type="file" name="uploaded-file">
-    <input type="submit" value="Upload">
+    <input type="text" name="category" />
+    <input name="uploaded-file" type="file" />
+    <input type="submit" value="Upload" />
   </form>
+  <div></div>
 </div>

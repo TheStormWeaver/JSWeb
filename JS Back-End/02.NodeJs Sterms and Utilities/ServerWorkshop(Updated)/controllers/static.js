@@ -25,7 +25,7 @@ module.exports = (req, res) => {
     send(data);
     file.on("data", send);
   });
-
+  
   file.on("end", () => res.end());
 
   function send(data) {

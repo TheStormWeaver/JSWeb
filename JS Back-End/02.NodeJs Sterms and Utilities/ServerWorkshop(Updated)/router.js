@@ -1,4 +1,4 @@
-const staticFile = require("./controllers/static.js");
+const staticFile = require("./controllers/static");
 const handlers = {};
 
 function match(method, url) {
@@ -41,4 +41,3 @@ module.exports = {
   delete: (...params) => registerHandler("DELETE", ...params),
   match,
 };
-

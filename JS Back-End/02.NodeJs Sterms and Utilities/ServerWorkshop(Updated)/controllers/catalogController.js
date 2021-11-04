@@ -1,12 +1,12 @@
-const database = require("../util/database.js");
-const { layout, render } = require("../util/template.js");
+const database = require("../util/database");
+const { layout, render } = require("../util/template");
 
 module.exports = async (req, res) => {
   const catalogPage = await render("catalog", {
     items: Object.entries(database.database)
       .map(
-        ([id, item]) =>
-          `<li data-id="${id}">${item.name} - ${item.serial} <a href="/delete?id=${id}">[Delete]</a> </li>`
+        ([id, i]) =>
+          `<li data-id="${id}">${i.name} - ${i.serial} <a href="/delete?id=${id}">[Delete]</a></li>`
       )
       .join(""),
   });

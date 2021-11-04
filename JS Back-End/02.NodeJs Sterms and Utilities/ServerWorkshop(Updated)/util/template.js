@@ -20,6 +20,7 @@ async function render(name, context = {}) {
   for (let prop of props) {
     result = result.replace(new RegExp(`{{${prop}}}`, "g"), context[prop]);
   }
+
   return result;
 }
 
