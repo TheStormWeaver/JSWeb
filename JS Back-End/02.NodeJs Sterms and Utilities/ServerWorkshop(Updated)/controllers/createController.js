@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   database.additem(body);
 
   res.writeHead(301, {
-    Redirect: "/catalog",
+    Location: "/catalog",
   });
   res.end();
-};
+};  

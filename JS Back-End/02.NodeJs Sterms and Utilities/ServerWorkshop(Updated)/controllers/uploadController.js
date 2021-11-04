@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
     await fs.rename(filePath, targetPath);
 
     res.writeHead(301, {
-      Redirect: "/catalog",
+      Location: "/catalog",
     });
     res.end();
   });
