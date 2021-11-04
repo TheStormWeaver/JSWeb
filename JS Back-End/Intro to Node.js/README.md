@@ -4,6 +4,7 @@
 - Modules;
 - Request and Response Wrapper;
 - Node.js Web Server.
+- Note: User "node index.js" to start the server
 
 
 # Materials
