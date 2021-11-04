@@ -2,10 +2,10 @@ const fs = require("fs/promises");
 
 async function loadTemplate(name) {
   try {
-    const template = await fs.reafFile(`./views/${name}.html`);
+    const template = await fs.readFile(`./views/${name}.html`);
     return template.toString();
   } catch (err) {
-    return ``;
+    return "";
   }
 }
 
@@ -14,10 +14,10 @@ async function layout(body, title = "Welcome") {
 }
 
 async function render(name, context = {}) {
-  const result = await loadTemplate(name);
+  let result = await loadTemplate(name);
   const props = Object.keys(context);
 
-  for (const prop of props) {
+  for (let prop of props) {
     result = result.replace(new RegExp(`{{${prop}}}`, "g"), context[prop]);
   }
   return result;

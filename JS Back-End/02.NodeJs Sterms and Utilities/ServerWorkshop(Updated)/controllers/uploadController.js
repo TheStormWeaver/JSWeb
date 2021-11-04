@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const formidable = require("formidable");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const form = new formidable.IncomingForm();
 
   form.parse(req, async (err, fields, file) => {

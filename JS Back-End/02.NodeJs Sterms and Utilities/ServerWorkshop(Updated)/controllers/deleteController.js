@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   database.deleteItem(id);
 
   res.writeHead(301, {
-    Location: "/catalog",
+    Redirect: "/catalog",
   });
   res.end();
 };

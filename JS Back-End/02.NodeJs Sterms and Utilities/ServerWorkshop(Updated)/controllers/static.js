@@ -1,4 +1,4 @@
-const fs = require("fs/promises");
+const fs = require("fs");
 
 module.exports = (req, res) => {
   const filename = req.url.slice(8);

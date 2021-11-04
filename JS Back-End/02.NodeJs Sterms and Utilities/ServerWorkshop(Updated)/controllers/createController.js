@@ -2,7 +2,7 @@ const parseForm = require("../util/formParser.js");
 
 const database = require("../util/database.js");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   const body = await parseForm(req);
 
   console.log("Created Item");

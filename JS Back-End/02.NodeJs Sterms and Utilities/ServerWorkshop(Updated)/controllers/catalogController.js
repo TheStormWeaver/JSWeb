@@ -1,5 +1,5 @@
-const { layout, render } = require("../util/template.js");
 const database = require("../util/database.js");
+const { layout, render } = require("../util/template.js");
 
 module.exports = async (req, res) => {
   const catalogPage = await render("catalog", {

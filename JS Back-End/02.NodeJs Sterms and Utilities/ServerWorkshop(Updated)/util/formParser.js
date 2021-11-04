@@ -1,6 +1,7 @@
-function parse(req) {
+async function parse(req) {
   return new Promise((resolve, reject) => {
-    const body = "";
+    let body = "";
+
     req.on("data", (data) => (body += data));
     req.on("end", () => {
       let result;
